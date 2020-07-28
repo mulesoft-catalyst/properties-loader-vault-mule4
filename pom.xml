@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.xyzcompany</groupId>
 	<artifactId>mule4-prop-loader</artifactId>
     <version>1.0.0</version>
-    <packaging>mule-application</packaging>
-
+    <packaging>mule-extension</packaging>
 	<name>mule4-prop-loader</name>
+
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<app.runtime>4.2.0</app.runtime>
-		<mule.maven.plugin.version>3.2.7</mule.maven.plugin.version>
+		<app.runtime>4.3.0</app.runtime>
+		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
 	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<parent>
+        <groupId>org.mule.extensions</groupId>
+        <artifactId>mule-modules-parent</artifactId>
+        <version>1.1.4</version>
+    </parent>
+  
 
 	<dependencies>
         <dependency>
@@ -47,21 +38,11 @@
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-module-spring-config</artifactId>
-            <version>4.1.1</version>
+            <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
-		<dependency>
-		    <groupId>org.mule.runtime</groupId>
-		    <artifactId>mule-api</artifactId>
-		    <version>1.1.1</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mule.runtime/mule-module-extensions-support -->
-		<dependency>
-		    <groupId>org.mule.runtime</groupId>
-		    <artifactId>mule-module-extensions-support</artifactId>
-		    <version>4.1.1</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>

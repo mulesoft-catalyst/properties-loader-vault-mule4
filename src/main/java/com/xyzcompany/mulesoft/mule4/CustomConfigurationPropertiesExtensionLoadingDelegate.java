@@ -45,5 +45,5 @@ public class CustomConfigurationPropertiesExtensionLoadingDelegate implements Ex
         .withExpressionSupport(NOT_SUPPORTED)
         .describedAs(" Meaningful description of what customParameter is for");
   }
-
+  
 }
