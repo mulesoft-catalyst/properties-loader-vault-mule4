@@ -21,6 +21,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Properties;
+
+
 
 /**
  * Builds the provider for a custom-properties-provider:config element.
@@ -49,7 +52,13 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
 
     // This is how you can access the configuration parameter of the <custom-properties-provider:config> element.
     String customParameterValue = parameters.getStringParameter("customParameter");
-    System.out.println("+createProvider");
+    this.secretsUrl = customParameterValue;
+    if (isStringNull(secretsUrl))
+  		throw new IllegalArgumentException("Required properties not supplied: secretsMgr.base.url");
+
+    System.out.println("+createProvider " +customParameterValue);
+    
+
 
     return new ConfigurationPropertiesProvider() {
 /*
@@ -178,7 +187,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
     this.nonSecretsUrl = secretsMgrUrl + "/non-secrets/" + contextPath + "/?business-domain=" + businessDomain;
     this.username = System.getProperty("app.ad.username");
     this.password = System.getProperty("app.ad.password");*/
-	  
+	/*  
 	String appName = System.getProperty("api.name");
 	if (isStringNull(appName))
 		throw new IllegalArgumentException("Required properties not supplied: api.name"); 
@@ -190,14 +199,16 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
 	String envId = System.getProperty("api.env");
 	if (isStringNull(envId))
 		throw new IllegalArgumentException("Required properties not supplied: api.env");
-	
+	*/
 	String secretsMgrUrl = System.getProperty("secretsMgr.base.url");
-	if (isStringNull(secretsMgrUrl))
-		throw new IllegalArgumentException("Required properties not supplied: secretsMgr.base.url");
+	//if (isStringNull(secretsMgrUrl))
+	//	throw new IllegalArgumentException("Required properties not supplied: secretsMgr.base.url");
 
-	String appId = appName + "-v" + appVersion;
-	String contextPath = "environments/" + envId + "/applications/" + appId;
-	this.secretsUrl = secretsMgrUrl + "/secrets/" + contextPath; 
+	//String appId = appName + "-v" + appVersion;
+	//String contextPath = "environments/" + envId + "/applications/" + appId;
+	
+	//this.secretsUrl = secretsMgrUrl + "/secrets/" + contextPath;
+	//this.secretsUrl = secretsMgrUrl;
 	this.username = System.getProperty("app.ad.username");
 	this.password = System.getProperty("app.ad.password");
 
