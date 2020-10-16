@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # properties-loader-vault-mule4
 
 This is an example that can be used to connect to a secrets provider to get secrets provider ID.
@@ -26,3 +27,6 @@ In your client application which will use thie module, do the following
   Go to Global Configuration Elements view
   Click Create, and search for USG Properties Provider Config, and click OK
   Enter the API URL exposed by the vault to get the secure id in custom parameter field and click OK
+=======
+# properties-loader-vault-mule4
+>>>>>>> a1ff6e2cf097613c7601f980e08bfb29087908e5

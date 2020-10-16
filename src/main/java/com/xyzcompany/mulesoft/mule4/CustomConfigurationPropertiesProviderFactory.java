@@ -52,6 +52,13 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
 
     // This is how you can access the configuration parameter of the <custom-properties-provider:config> element.
     String customParameterValue = parameters.getStringParameter("customParameter");
+    /*
+    String userNameParameterValue = parameters.getStringParameter("userNameParameter");
+    String passwordParameterValue = parameters.getStringParameter("passwordParameter");
+    
+    System.out.println("+userNameParameterValue " +userNameParameterValue);
+    */
+    
     this.secretsUrl = customParameterValue;
     if (isStringNull(secretsUrl))
   		throw new IllegalArgumentException("Required properties not supplied: secretsMgr.base.url");

@@ -44,6 +44,17 @@ public class CustomConfigurationPropertiesExtensionLoadingDelegate implements Ex
         .withRequiredParameter("customParameter").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
         .withExpressionSupport(NOT_SUPPORTED)
         .describedAs(" Meaningful description of what customParameter is for");
+   /*
+      defaultParameterGroup
+      .withRequiredParameter("userNameParameter").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
+      .withExpressionSupport(NOT_SUPPORTED)
+      .describedAs(" Meaningful description of what customParameter is for");
+      defaultParameterGroup
+      .withRequiredParameter("passowrdParameter").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
+      .withExpressionSupport(NOT_SUPPORTED)
+      .describedAs(" Meaningful description of what customParameter is for");
+
+*/
   }
   
 }
