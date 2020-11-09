@@ -51,17 +51,19 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
                                                         ResourceProvider externalResourceProvider) {
 
     // This is how you can access the configuration parameter of the <custom-properties-provider:config> element.
-    String customParameterValue = parameters.getStringParameter("customParameter");
-    /*
-    String userNameParameterValue = parameters.getStringParameter("userNameParameter");
-    String passwordParameterValue = parameters.getStringParameter("passwordParameter");
+    String customParameterValue = parameters.getStringParameter("secretsApiUrl");
+    
+    String userNameParameterValue = parameters.getStringParameter("user");
+    String passwordParameterValue = parameters.getStringParameter("password");
     
     System.out.println("+userNameParameterValue " +userNameParameterValue);
-    */
+    
     
     this.secretsUrl = customParameterValue;
     if (isStringNull(secretsUrl))
   		throw new IllegalArgumentException("Required properties not supplied: secretsMgr.base.url");
+    this.username=userNameParameterValue;
+    this.password=passwordParameterValue;
 
     System.out.println("+createProvider " +customParameterValue);
     
@@ -103,7 +105,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
 
 		  // TODO change implementation to discover properties values from your custom source
 		  //Map<String,String> properties=null;
-		  validateProperties();
+		 // validateProperties();
 		  if(properties==null){
 		    try{
 		      properties  = getResources();

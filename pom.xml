@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xyzcompany</groupId>
 	<artifactId>mule4-prop-loader</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.4</version>
     <packaging>mule-extension</packaging>
 	<name>mule4-prop-loader</name>
 
