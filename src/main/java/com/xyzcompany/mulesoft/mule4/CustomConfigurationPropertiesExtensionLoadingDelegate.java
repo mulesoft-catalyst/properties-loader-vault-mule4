@@ -10,6 +10,7 @@ import static org.mule.metadata.api.model.MetadataFormat.JAVA;
 import static org.mule.runtime.api.meta.Category.SELECT;
 import static org.mule.runtime.api.meta.ExpressionSupport.NOT_SUPPORTED;
 import org.mule.metadata.api.builder.BaseTypeBuilder;
+import org.mule.runtime.api.meta.ExpressionSupport;
 import org.mule.runtime.api.meta.model.declaration.fluent.ConfigurationDeclarer;
 import org.mule.runtime.api.meta.model.declaration.fluent.ExtensionDeclarer;
 import org.mule.runtime.api.meta.model.declaration.fluent.ParameterGroupDeclarer;
@@ -50,16 +51,16 @@ public class CustomConfigurationPropertiesExtensionLoadingDelegate implements Ex
     	*/
       defaultParameterGroup
         .withRequiredParameter("secretsApiUrl").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
-        .withExpressionSupport(NOT_SUPPORTED)
+        .withExpressionSupport(ExpressionSupport.SUPPORTED)
         .describedAs(" URL for the API");
       defaultParameterGroup
       	.withRequiredParameter("user").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
-      	.withExpressionSupport(NOT_SUPPORTED)
+      	.withExpressionSupport(ExpressionSupport.SUPPORTED)
       	.describedAs(" User or Client ID for accessing the API");
       defaultParameterGroup
       	.withRequiredParameter("password").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
       	.withLayout(LayoutModel.builder().asPassword().build())
-      	.withExpressionSupport(NOT_SUPPORTED)
+      	.withExpressionSupport(ExpressionSupport.SUPPORTED)
       	.describedAs(" Password for accessing the secret API");
   }
   

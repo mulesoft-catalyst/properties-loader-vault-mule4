@@ -161,8 +161,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
   private String username;
   private String password;
   private String secretsUrl;
-  private String nonSecretsUrl;
-
+  
   private boolean isStringNull(String str) {
     if (str == null || str.trim().isEmpty())
       return true;
@@ -227,8 +226,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
   public Map<String, String> getResources() throws Exception {
 	System.out.println("+getResources");
 
-    ConfigPropertiesLoader vpl = new ConfigPropertiesLoader(this.username, this.password, this.secretsUrl,
-            this.nonSecretsUrl);
+    ConfigPropertiesLoader vpl = new ConfigPropertiesLoader(this.username, this.password, this.secretsUrl);
     Map<String, String> properties = vpl.getProperties();
 	System.out.println("-getResources");
     return properties;
