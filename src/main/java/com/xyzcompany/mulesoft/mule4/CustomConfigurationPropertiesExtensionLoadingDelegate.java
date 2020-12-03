@@ -10,9 +10,12 @@ import static org.mule.metadata.api.model.MetadataFormat.JAVA;
 import static org.mule.runtime.api.meta.Category.SELECT;
 import static org.mule.runtime.api.meta.ExpressionSupport.NOT_SUPPORTED;
 import org.mule.metadata.api.builder.BaseTypeBuilder;
+import org.mule.runtime.api.meta.ExpressionSupport;
 import org.mule.runtime.api.meta.model.declaration.fluent.ConfigurationDeclarer;
 import org.mule.runtime.api.meta.model.declaration.fluent.ExtensionDeclarer;
 import org.mule.runtime.api.meta.model.declaration.fluent.ParameterGroupDeclarer;
+import org.mule.runtime.api.meta.model.display.LayoutModel;
+import org.mule.runtime.api.meta.model.display.LayoutModel.LayoutModelBuilder;
 import org.mule.runtime.extension.api.loader.ExtensionLoadingContext;
 import org.mule.runtime.extension.api.loader.ExtensionLoadingDelegate;
 
@@ -40,21 +43,25 @@ public class CustomConfigurationPropertiesExtensionLoadingDelegate implements Ex
 
     ParameterGroupDeclarer defaultParameterGroup = configurationDeclarer.onDefaultParameterGroup();
     // TODO you can add/remove configuration parameter using the code below.
+    	/*
+    	defaultParameterGroup
+    	.withRequiredParameter("protocol").ofType(BaseTypeBuilder.create(JAVA).stringType().enumOf("HTTP","HTTPS").defaultValue("HTTP").build())
+    	.withExpressionSupport(NOT_SUPPORTED)
+    	.describedAs(" URL for the API");
+    	*/
       defaultParameterGroup
-        .withRequiredParameter("customParameter").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
-        .withExpressionSupport(NOT_SUPPORTED)
-        .describedAs(" Meaningful description of what customParameter is for");
-   /*
+        .withRequiredParameter("secretsApiUrl").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
+        .withExpressionSupport(ExpressionSupport.SUPPORTED)
+        .describedAs(" URL for the API");
       defaultParameterGroup
-      .withRequiredParameter("userNameParameter").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
-      .withExpressionSupport(NOT_SUPPORTED)
-      .describedAs(" Meaningful description of what customParameter is for");
+      	.withRequiredParameter("user").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
+      	.withExpressionSupport(ExpressionSupport.SUPPORTED)
+      	.describedAs(" User or Client ID for accessing the API");
       defaultParameterGroup
-      .withRequiredParameter("passowrdParameter").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
-      .withExpressionSupport(NOT_SUPPORTED)
-      .describedAs(" Meaningful description of what customParameter is for");
-
-*/
+      	.withRequiredParameter("password").ofType(BaseTypeBuilder.create(JAVA).stringType().build())
+      	.withLayout(LayoutModel.builder().asPassword().build())
+      	.withExpressionSupport(ExpressionSupport.SUPPORTED)
+      	.describedAs(" Password for accessing the secret API");
   }
   
 }

@@ -51,17 +51,19 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
                                                         ResourceProvider externalResourceProvider) {
 
     // This is how you can access the configuration parameter of the <custom-properties-provider:config> element.
-    String customParameterValue = parameters.getStringParameter("customParameter");
-    /*
-    String userNameParameterValue = parameters.getStringParameter("userNameParameter");
-    String passwordParameterValue = parameters.getStringParameter("passwordParameter");
+    String customParameterValue = parameters.getStringParameter("secretsApiUrl");
+    
+    String userNameParameterValue = parameters.getStringParameter("user");
+    String passwordParameterValue = parameters.getStringParameter("password");
     
     System.out.println("+userNameParameterValue " +userNameParameterValue);
-    */
+    
     
     this.secretsUrl = customParameterValue;
     if (isStringNull(secretsUrl))
   		throw new IllegalArgumentException("Required properties not supplied: secretsMgr.base.url");
+    this.username=userNameParameterValue;
+    this.password=passwordParameterValue;
 
     System.out.println("+createProvider " +customParameterValue);
     
@@ -103,7 +105,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
 
 		  // TODO change implementation to discover properties values from your custom source
 		  //Map<String,String> properties=null;
-		  validateProperties();
+		 // validateProperties();
 		  if(properties==null){
 		    try{
 		      properties  = getResources();
@@ -159,8 +161,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
   private String username;
   private String password;
   private String secretsUrl;
-  private String nonSecretsUrl;
-
+  
   private boolean isStringNull(String str) {
     if (str == null || str.trim().isEmpty())
       return true;
@@ -225,8 +226,7 @@ public class CustomConfigurationPropertiesProviderFactory implements Configurati
   public Map<String, String> getResources() throws Exception {
 	System.out.println("+getResources");
 
-    ConfigPropertiesLoader vpl = new ConfigPropertiesLoader(this.username, this.password, this.secretsUrl,
-            this.nonSecretsUrl);
+    ConfigPropertiesLoader vpl = new ConfigPropertiesLoader(this.username, this.password, this.secretsUrl);
     Map<String, String> properties = vpl.getProperties();
 	System.out.println("-getResources");
     return properties;
