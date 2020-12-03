@@ -12,20 +12,18 @@ public class ConfigPropertiesLoader {
 	private String username;
 	private String password;
 	private String secretsUrl;
-	private String nonSecretsUrl;
-
+	
 	private static final Logger logger = LogManager.getLogger(ConfigPropertiesLoader.class.getName());
 
-	public ConfigPropertiesLoader(String username, String password, String secretsUrl, String nonSecretsUrl) {
+	public ConfigPropertiesLoader(String username, String password, String secretsUrl) {
 		this.username = username;
 		this.password = password;
 		this.secretsUrl = secretsUrl;
-		this.nonSecretsUrl = nonSecretsUrl;
 	}
 
 
 	public Map<String, String> getProperties() throws Exception {
-		ConfigClient vc = new ConfigClient(this.username, this.password, this.secretsUrl, this.nonSecretsUrl);
+		ConfigClient vc = new ConfigClient(this.username, this.password, this.secretsUrl);
 		byte[] resourceData = null;
 		Map<String, Map<String, String>> propertiesMap = new HashMap<String, Map<String, String>>();
 		Map<String, String> allProperties= new HashMap<String, String>();

@@ -34,6 +34,12 @@ public class ConfigClient {
 		this.secretsUrl = secretsUrl;
 		this.nonSecretsUrl = nonSecretsUrl;
 	}
+	
+	public ConfigClient(String username, String password, String secretsUrl) {
+		this.username = username;
+		this.password = password;
+		this.secretsUrl = secretsUrl;
+	}
 
 	public Map<String, Map<String, String>> retrievePropertiesMap() throws Exception {
 
