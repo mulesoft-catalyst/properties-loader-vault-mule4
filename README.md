@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # properties-loader-vault-mule4
 
 This is an example that can be used to connect to a secrets provider to get secrets provider ID.
@@ -39,6 +38,3 @@ In your client application which will use this module, do the following
 
 The module will return the secrets and can be retrieved using ${usg::user} and ${usg::password}
 
-=======
-# properties-loader-vault-mule4
->>>>>>> a1ff6e2cf097613c7601f980e08bfb29087908e5
