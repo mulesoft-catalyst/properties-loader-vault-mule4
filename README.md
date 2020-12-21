@@ -36,5 +36,5 @@ In your client application which will use this module, do the following
     <img src="https://user-images.githubusercontent.com/62348820/102549296-7c948880-4081-11eb-8056-7f814f49cda6.png" width="400" height="400"/>
 
 
-The module will return the secrets and can be retrieved using ${usg::user} and ${usg::password}
+The module will return the properties values  and can be retrieved using ${usg::<<propertyKey>>}
 
